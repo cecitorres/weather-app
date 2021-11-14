@@ -31,4 +31,14 @@ const main = async () => {
   setWeather(await getCityWeather('Vancouver'));
 }
 
+// Add event to search form submit event
+const searchForm = document.querySelector('.weather-search-form');
+searchForm.addEventListener('submit', async (e) => {
+  // stop form submission
+  e.preventDefault();
+  // Read the value of the input
+  const searchInput = document.querySelector('.weather-search-input');
+  setWeather(await getCityWeather(searchInput.value));
+});
+
 main();
