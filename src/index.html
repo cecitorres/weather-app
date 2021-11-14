@@ -9,6 +9,9 @@
 </head>
 <body>
   <div class="container">
+    <div class="loading-spinner-wrapper">
+      <div class="loading-spinner">Loading...</div>
+    </div>
     <div class="weather-info-wrapper">
       <div class="weather-info">
         <div class="weather-info-header">
@@ -28,18 +31,18 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="weather-search-container">
-      <form class="weather-search-form">
-        <div class="weather-search-body">
-          <div class="weather-search-body-input">
-            <input type="text" class="weather-search-input" placeholder="Search for your city">
+      <div class="weather-search-container">
+        <form class="weather-search-form">
+          <div class="weather-search-body">
+            <div class="weather-search-body-input">
+              <input type="text" class="weather-search-input" placeholder="Search for your city">
+            </div>
+            <div class="weather-search-body-button">
+              <button class="weather-search-button">Search</button>
+            </div>
           </div>
-          <div class="weather-search-body-button">
-            <button class="weather-search-button">Search</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
   <script src="index.js"></script>

@@ -29,16 +29,27 @@ const roundTemp = (temp) => {
 
 const main = async () => {
   setWeather(await getCityWeather('Vancouver'));
+  setLoadingSpinner(false);
 }
+const setLoadingSpinner = (isLoading) => {
+  const loadingSpinner = document.querySelector('.loading-spinner-wrapper');
+  if (isLoading) {
+    loadingSpinner.classList.remove('hidden');
+  } else {
+    loadingSpinner.classList.add('hidden');
+  }
+};
 
 // Add event to search form submit event
 const searchForm = document.querySelector('.weather-search-form');
 searchForm.addEventListener('submit', async (e) => {
   // stop form submission
   e.preventDefault();
+  setLoadingSpinner(true);
   // Read the value of the input
   const searchInput = document.querySelector('.weather-search-input');
   setWeather(await getCityWeather(searchInput.value));
+  setLoadingSpinner(false);
 });
 
 main();
