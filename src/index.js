@@ -19,8 +19,12 @@ const setWeather = (weather) => {
 
   weatherLocation.innerHTML = `${weather.name}`;
   weatherIcon.src = `${weatherIconURL}`;
-  weatherTemp.innerHTML = `${weather.main.temp}&deg;`;
-  weatherFeelsLike.innerHTML = `Feels like ${weather.main.feels_like}&deg;`;
+  weatherTemp.innerHTML = `${roundTemp(weather.main.temp)}&deg;`;
+  weatherFeelsLike.innerHTML = `Feels like ${roundTemp(weather.main.feels_like)}&deg;`;
+};
+
+const roundTemp = (temp) => {
+  return Math.round(temp);
 };
 
 const main = async () => {
