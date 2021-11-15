@@ -1,8 +1,7 @@
 const getCityWeather = async (cityName) => {
   const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=382f59524073c13ea2c6dfb8347a2258&units=metric`)
     .then(response => response.json())
-    .then(data => data)
-    .catch(error => console.log(error));
+    .then(data => data);
   return result;
 };
 
@@ -31,6 +30,7 @@ const main = async () => {
   setWeather(await getCityWeather('Vancouver'));
   setLoadingSpinner(false);
 }
+
 const setLoadingSpinner = (isLoading) => {
   const loadingSpinner = document.querySelector('.loading-spinner-wrapper');
   if (isLoading) {
@@ -48,8 +48,14 @@ searchForm.addEventListener('submit', async (e) => {
   setLoadingSpinner(true);
   // Read the value of the input
   const searchInput = document.querySelector('.weather-search-input');
-  setWeather(await getCityWeather(searchInput.value));
-  setLoadingSpinner(false);
+  try {
+    const cityWeather = await getCityWeather(searchInput.value);
+    setWeather(cityWeather);
+  } catch (error) {
+    alert('City not found');
+  } finally {
+    setLoadingSpinner(false);
+  }
 });
 
 main();
